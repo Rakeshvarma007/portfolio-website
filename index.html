@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles & Updated Cosmic CSS Variables */
+        :root {
+            --bg-color: #121226; /* Deeper indigo/purple from background */
+            --surface-color: #212140; /* Indigo/blue from background */
+            --text-primary: #e6e6fa; /* Light lavender-white from nebula */
+            --text-secondary: #a3a7da; /* Lavender-gray for subtitles */
+            --accent-pink: #f770ff; /* Vibrant cosmic pink from nebula */
+            --accent-blue: #00e5ff; /* Electric cosmic blue from planets/light */
+            --accent-hover: #ff9ef4; /* Lighter pink for hover */
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-heading: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: url('background.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navigation */
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: rgba(18, 18, 38, 0.3); /* Lowered from 0.85 to 0.3 for more transparency */
+            backdrop-filter: blur(15px); /* Keeps the glassmorphism blur effect */
+            -webkit-backdrop-filter: blur(15px); /* Added for better browser support */
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(163, 167, 218, 0.1);
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            font-family: var(--font-heading);
+            color: var(--accent-pink);
+            letter-spacing: -1px;
+        }
+        .logo span {
+            color: var(--text-primary);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            transition: color 0.3s ease;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Hero Section with Integrated Image */
+        #home {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        #home h1 {
+            font-family: var(--font-heading);
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #e6e6fa 30%, #f770ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            
+        }
+
+        #home h1 span {
+            color: var(--accent-blue);
+            -webkit-text-fill-color: var(--accent-blue);
+        }
+
+        #home p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 1.5rem auto 3rem;
+            font-weight: 400;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2.5rem;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, #1a99aa 100%);
+            color: #121226;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            font-family: var(--font-heading);
+            box-shadow: 0 4px 15px rgba(0, 229, 255, 0.3);
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #00b8cc 0%, #1a99aa 100%);
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0, 229, 255, 0.5);
+        }
+
+        /* Section Global Styles */
+        section {
+            padding: 8rem 5% 6rem;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            font-family: var(--font-heading);
+            position: relative;
+            background: linear-gradient(135deg, #e6e6fa 30%, #f770ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-blue);
+            border-radius: 50px;
+        }
+
+        /* Projects Section */
+
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+
+        .project-card {
+    background-color: var(--surface-color);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(163, 167, 218, 0.1);
+    position: relative; /* Add this line */
+}
+        .stretched-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5; /* Ensures it sits on top of the text */
+}
+
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 220px;
+            background-color: #1a1a33; /* Dark background for placeholders */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(163, 167, 218, 0.1);
+            position: relative;
+        }
+        .project-image i {
+            font-size: 3rem;
+            color: rgba(247, 112, 255, 0.3);
+        }
+
+        .project-info {
+            padding: 2rem;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.8rem;
+            font-family: var(--font-heading);
+            color: var(--text-primary);
+        }
+
+        .project-info p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.7rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background-color: #1a1a33;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+        }
+
+        /* Contact Section */
+        #contact {
+            text-align: center;
+            position: relative;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-content p {
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        /* This creates a uniform transparent dark wash across the entire page */
+        /* This creates a slightly darker uniform overlay across the entire page */
+        section, footer {
+            background-color: rgba(10, 10, 20, 0.85); /* Increased opacity from 0.75 to 0.85 for better text contrast */
+        }
+        /* Footer */
+footer {
+    background-color: rgba(10, 10, 20, 0.85);
+    padding: 2rem 0; /* Adds some breathing room top and bottom */
+    text-align: center; /* This centers the text and the link */
+    border-top: 1px solid rgba(163, 167, 218, 0.1); /* Optional: matches your section borders */
+}
+
+footer a {
+    color: var(--accent-pink);
+    font-weight: 500;
+}
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            #home h1 {
+                font-size: 2.8rem;
+            }
+            #home p {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Rakesh Varma Sirivuri</div>
+        <ul class="nav-links">
+            <li><a href="#home">Cosmos</a></li>
+            <li><a href="#about">Origins</a></li>
+            <li><a href="#projects">Creations</a></li>
+            <li><a href="#philosophy">Philosophy</a></li>
+            <li><a href="#contact">Signals</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+    <div class="hero-content">
+        <h1>Architecting <span>Neural</span> Universes</h1>
+        <p>
+            Mapping the latent spaces of Intelligence. I specialize in deciphering the 
+            complex weight of neural architectures to build the next generation of 
+            autonomous digital ecosystems.
+        </p>
+        <a href="#projects" class="btn">View the Constellations</a>
+    </div>
+</section>
+
+    <section id="about">
+        <h2 class="section-title">Origins Story</h2>
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <img src="diwali.jpeg" alt="Your Name" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-pink); box-shadow: 0 0 20px var(--accent-pink);">
+        </div>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center; color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8;">
+            <p>
+                I am a Btech student driven by passion for <strong>Deep Learning</strong> and <strong>Neural Networks</strong>. My work focuses on exploring the underlying "why" of complex architectures, pushing the boundaries of current AI research to invent novel ideas and transformative solutions. By bridging the gap between theoretical exploration and practical implementation, I strive to develop robust, real-world applications that solve intricate problems and contribute to the evolution of intelligent systems.
+            </p>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Featured Creations</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <a href="https://github.com/Rakeshvarma007/Domain-Decoupled-MoE-Landslide-Predictor" target="_blank" class="stretched-link"></a>
+                <div class="project-image">
+                    <i class="fas fa-mountain"></i>
+                </div>
+                <div class="project-info">
+                    
+                    <h3>Landslide MoE Predictor</h3>
+                    <p>A deep learning model utilizing a Domain-Decoupled Mixture of Experts (MoE) architecture to predict landslide susceptibilities across varying geographical domains.</p>
+                    <div class="tags">
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Streamlit</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <a href="https://github.com/Rakeshvarma007/Autonomous-self-navigating-rover" target="_blank" class="stretched-link"></a>
+                <div class="project-image">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="project-info">
+                    <h3>Autonomous navigation rover</h3>
+                    <p>A self-navigating rover featuring real-time obstacle avoidance using computer vision and ultra sonic for complex terrains.</p>
+                    <div class="tags">
+                        <span class="tag">Opencv</span>
+                        <span class="tag">Raspberrypi</span>
+                        <span class="tag">Yolo_v8</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <a href="https://github.com/Rakeshvarma007/CodeSense-Agent-nasiko-" target="_blank" class="stretched-link"></a>
+                <div class="project-image">
+                   <i class="fas fa-terminal"></i>
+                </div>
+                <div class="project-info">
+                    <h3>Doc-string generator</h3>
+                    <p>An Intelligent agent that automatically generates professional Google-style docstrings and grades the maintainability of your Python code in real-time.</p>
+                    <div class="tags">
+                        <span class="tag">LLMs</span>
+                        <span class="tag">FASTAPI</span>
+                        <span class="tag">LANGCHAIN</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <a href="https://github.com/Rakeshvarma007/open-source-chat-bot" target="_blank" class="stretched-link"></a>
+                <div class="project-image">
+                    <i class="fas fa-satellite-dish"></i>
+                </div>
+                <div class="project-info">
+                    <h3>Open-Source Chatbot</h3>
+                    <p>A versatile, locally-deployable conversational AI built with open-source models. Features context retention, RAG capabilities, and a responsive UI.</p>
+                    <div class="tags">
+                        <span class="tag">Gemma 3</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Hugging Face</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <a href="https://github.com/Rakeshvarma007/Heart-disease-predictor" target="_blank" class="stretched-link"></a>
+                <div class="project-image">
+                    <i class="fas fa-heart-pulse"></i>
+                </div>
+                <div class="project-info">
+                    <h3>Cardiac Risk Predictor</h3>
+                    <p>A machine learning pipeline trained on clinical datasets to evaluate patient metrics and predict the probability of heart disease, aiding in early diagnosis.</p>
+                    <div class="tags">
+                        <span class="tag">Sci-kit learn</span>
+                        <span class="tag">Decision Tree's</span>
+                        <span class="tag">AWS</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <a href="https://github.com/Rakeshvarma007/smart-study-buddy" target="_blank" class="stretched-link"></a>
+                <div class="project-image">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="project-info">
+                    <h3>Smart Study Buddy</h3>
+                    <p>A local NotebookLM which summarizes PDF using qwen3</p>
+                    <div class="tags">
+                        <span class="tag">QWEN</span>
+                        <span class="tag">Hugginface</span>
+                        <span class="tag">Langchain</span>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+    </section>
+
+    <section id="philosophy">
+    <h2 class="section-title">The Bumblebee Principle</h2>
+    
+    <div style="max-width: 900px; margin: 0 auto;">
+        
+        <blockquote style="font-size: 1.3rem; font-style: italic; color: var(--accent-pink); border-left: 4px solid var(--accent-blue); padding: 1.2rem 1.5rem; margin: 0 auto 2.5rem; text-align: left; background-color: rgba(33, 33, 64, 0.5); border-radius: 0 15px 15px 0;">
+            "According to all known laws of aviation, the bumblebee should not be able to fly. Its wingspan is not in right proportion to its body mass, but ignoring all these laws it flies anyway."
+        </blockquote>
+        
+        <p style="color: var(--text-secondary); font-size: 1.15rem; line-height: 1.8; text-align: left;">
+            For decades, traditional computing paradigms suggested that modeling human-like intuition or parsing hyper-complex, non-linear data was impossible. But just like the bumblebee, <strong>Neural Networks</strong> don't care about the constraints of classical logic. They find the underlying patterns anyway. 
+            <br><br>
+            My engineering philosophy is rooted in this persistence. I design deep learning architectures and autonomous systems to challenge the boundaries of what machines can achieve—pushing past the "impossible" until it takes flight.
+        </p>
+
+    </div>
+</section>
+
+    <section id="contact">
+        <h2 class="section-title">Transmit Signals</h2>
+        <div class="contact-content">
+            <p>I am actively seeking new challenges and collaborative ventures in the tech sector. Whether you have a project in mind, a specific question, or simply want to connect, feel free to send a signal across the void!</p>
+            <a href="mailto:rakeshvarmasirivuri@gmail.com" class="btn">Send Signal</a>
+        </div>
+    </section>
+
+    
+
+    <footer>
+    <p>&copy; 2026 FirstName LastName. Engineered by <a href="https://github.com/Rakeshvarma007">Rakesh Varma sirivuri</a>.</p>
+</footer>
+
+</body>
+</html>
